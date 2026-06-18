@@ -33,7 +33,9 @@ Repoda bulunan başlıca dosyaların görevleri şu şekildedir:
 *   Pandas, NumPy
 *   Doğal Dil İşleme (NLP) Teknikleri
 
-## 💡 Sonuç
-Bu yarışma bana; modelin sadece eğitim verisinde (train data) mükemmel çalışmasının tek başına hiçbir şey ifade etmediğini, asıl önemli olanın "görünmeyen veri" (unseen/test data) üzerinde genellenebilir modeller kurmak olduğunu gösterdi. 
-
-Projemi incelediğiniz için teşekkürler! Görüş, öneri ve geri bildirimlere her zaman açığım. 
+## 💡 Sonuç ve Gelecek Çalışmalar
+Bu proje kapsamında kurulan pipeline, tablusal veriler ile serbest metin verilerinin (NLP ile) birleştirilerek anlamlı özellikler üretilmesi noktasında başarılı bir temel oluşturmuştur. Gelişmiş validasyon stratejileri sayesinde modelin genellenebilirliği artırılmıştır. 
+Gelecek iterasyonlar için planlanan potansiyel geliştirmeler şunlardır:
+- Farklı dil modelleri (örn. BERT, RoBERTa varyantları) ile daha zengin metin özellikleri çıkarılması.
+- Model stacking ve blending mimarilerinin daha da derinleştirilmesi.
+- Hiperparametre optimizasyon uzayının (search space) genişletilmesi.
