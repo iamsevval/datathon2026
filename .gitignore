@@ -1,0 +1,13 @@
+# Dataset and large files
+*.csv
+*.pkl
+
+# IDE / System
+.DS_Store
+.idea/
+.vscode/
+
+# Python / Cache
+__pycache__/
+*.pyc
+catboost_info/
