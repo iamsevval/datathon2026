@@ -1,3 +1,10 @@
+"""
+06. HYPERPARAMETER TUNING VIA OPTUNA
+------------------------------------
+Bu betik, model performansını maksimize etmek için
+CatBoost ve LightGBM modellerinin hiperparametrelerini
+Optuna çerçevesi kullanılarak optimize eder. (Gece Mesaisi Optimizasyonu)
+"""
 import pandas as pd
 import numpy as np
 import optuna

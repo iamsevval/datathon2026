@@ -1,3 +1,10 @@
+"""
+03. TARGET LEAKAGE HUNT
+-----------------------
+Bu betik, veri setinde hedefe (career_success_score)
+doğrudan işaret eden herhangi bir "veri sızıntısı" 
+(data leakage) veya deterministik formül olup olmadığını araştırır.
+"""
 import pandas as pd
 import numpy as np
 import re

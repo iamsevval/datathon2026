@@ -1,3 +1,11 @@
+"""
+05. ADVERSARIAL VALIDATION
+--------------------------
+Bu betik, Train ve Test veri setleri arasındaki dağılım
+farklılıklarını (distribution shift) ölçmek için Classifier
+kullanarak Adversarial Validation işlemi gerçekleştirir.
+Amaç, overfitting riskini minimuma indirmektir.
+"""
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold

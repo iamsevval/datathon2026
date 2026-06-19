@@ -1,3 +1,10 @@
+"""
+04. MAGIC FEATURE HUNT
+----------------------
+Bu betik, yarışmadaki hedef değişkenin olası gizli alt
+değişkenlerden (sub-scores) üretilip üretilmediğini anlamak için
+lineer ve doğrusal olmayan (non-linear) algoritmalar kullanır.
+"""
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import Ridge, Lasso, ElasticNet

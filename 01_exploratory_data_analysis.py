@@ -1,3 +1,10 @@
+"""
+01. EXPLORATORY DATA ANALYSIS (EDA)
+-----------------------------------
+Bu betik, Datathon 2026 veri setinin temel özelliklerini,
+dağılımlarını ve zaman tabanlı özelliklerin (yıl vs.)
+durumunu analiz etmek için oluşturulmuştur.
+"""
 import pandas as pd
 
 train = pd.read_csv('train.csv')

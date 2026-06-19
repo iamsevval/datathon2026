@@ -1,3 +1,10 @@
+"""
+02. OUTLIER DETECTION & ANALYSIS
+--------------------------------
+Bu betik, hedef değişkendeki (career_success_score)
+aykırı değerleri tespit etmek ve bu değerlerin
+diğer özelliklerle ilişkisini incelemek amacıyla yazılmıştır.
+"""
 import pandas as pd
 import numpy as np
 

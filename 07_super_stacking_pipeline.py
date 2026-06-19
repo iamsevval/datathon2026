@@ -1,3 +1,14 @@
+"""
+07. SUPER STACKING PIPELINE & MULTI-SEED PSEUDO-LABELING
+--------------------------------------------------------
+Bu betik, projenin nihai (final) tahminlerini üretir.
+Özellikleri:
+ - HuggingFace NLP Sentence Embeddings
+ - Multi-Seed (42, 123, 777) K-Fold Cross Validation
+ - 4 Farklı Base Model (CatBoost, CatBoost+HF, LightGBM, XGBoost)
+ - Ridge Meta-Model Stacking (Ensembling)
+ - Pseudo-Labeling (2-Pass Training)
+"""
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import KFold
