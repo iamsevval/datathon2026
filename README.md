@@ -10,11 +10,11 @@ Aşağıda, yarışma sürecinde geliştirilen ana modelimizin (Super Stacking) 
 
 | Model | OOF RMSE | Açıklama |
 | :--- | :--- | :--- |
-| **🏆 Super Stacking Pipeline (RidgeCV)** | **~8.85 (Tahmini)** | **En başarılı model.** 4 Farklı Base Modelin + Pseudo Labeling'in Ridge ile birleşimi. |
-| CatBoost (Text Features Native) | ~8.90 | Sadece CatBoost'un dahili NLP motoru ile eğitilmiş model. |
-| CatBoost + HuggingFace Embeddings | ~8.88 | `paraphrase-multilingual-MiniLM-L12-v2` embeddingleri ile eğitildi. |
-| LightGBM + HuggingFace Embeddings | ~8.91 | Optuna ile hiperparametreleri optimize edilmiş LGBM modeli. |
-| XGBoost + HuggingFace Embeddings | ~8.92 | XGBoost Hist tree metodu ile eğitilen model. |
+| **🏆 Super Stacking Pipeline (Ridge)** | **8.78** | **En başarılı model.** 4 Farklı Base Modelin + Pseudo Labeling'in Ridge ile birleşimi. |
+| CatBoost (Text Features Native) | 8.88 | Sadece CatBoost'un dahili NLP motoru ile eğitilmiş model. |
+| CatBoost + HuggingFace Embeddings | 8.94 | `paraphrase-multilingual-MiniLM-L12-v2` embeddingleri ile eğitildi. |
+| XGBoost + HuggingFace Embeddings | 8.99 | XGBoost Hist tree metodu ile eğitilen model. |
+| LightGBM + HuggingFace Embeddings | 9.05 | Optuna ile hiperparametreleri optimize edilmiş LGBM modeli. |
 
 ## 🧠 Gelişmiş Yaklaşımlar (Advanced Features)
 
