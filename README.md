@@ -46,4 +46,4 @@ Proje, kod okunabilirliğini artırmak ve bilimsel bir süreç izlemek amacıyla
 *   **Optimizasyon:** Optuna (Hyperparameter Tuning)
 
 ## 💡 Sonuç
-Bu repo, veri ön işlemeden derin NLP vektörizasyonlarına ve uçtan uca Stacking mimarilerine kadar eksiksiz bir "Winner" tarzı Kaggle çözüm yapısını temsil etmektedir.
+Bu repo, veri ön işlemeden derin NLP vektörizasyonlarına ve uçtan uca Stacking mimarilerine kadar "Winner" tarzı Kaggle çözüm yapısını temsil etmektedir.
