@@ -1,49 +1,46 @@
 # BTK Akademi Datathon 2026 – Career Success Score Prediction
 
-Bu proje, BTK Akademi tarafından düzenlenen Datathon 2026 yarışması kapsamında geliştirilmiştir.
+This project was developed as part of the Datathon 2026 competition organized by BTK Akademi.
 
-Amaç, öğrencilerin akademik geçmişleri, teknik becerileri, proje deneyimleri, GitHub aktiviteleri ve en önemlisi mentor geri bildirimlerinden (doğal dil metni) yararlanarak `career_success_score` değerini tahmin etmektir.
+The goal is to predict the `career_success_score` value by leveraging students' academic backgrounds, technical skills, project experience, GitHub activity, and — most importantly — mentor feedback (natural language text).
 
 ## 🚀 Model Performance Summary
 
-Aşağıda, yarışma sürecinde geliştirilen ana modelimizin (Super Stacking) CV (Cross Validation) sonuçları yer almaktadır:
+Below are the CV (Cross Validation) results of our main model (Super Stacking) developed during the competition:
 
-| Model | OOF RMSE | Açıklama |
+| Model | OOF RMSE | Description |
 | :--- | :--- | :--- |
-| **🏆 Super Stacking Pipeline (Ridge)** | **8.78** | **En başarılı model.** 4 Farklı Base Modelin + Pseudo Labeling'in Ridge ile birleşimi. |
-| CatBoost (Text Features Native) | 8.88 | Sadece CatBoost'un dahili NLP motoru ile eğitilmiş model. |
-| CatBoost + HuggingFace Embeddings | 8.94 | `paraphrase-multilingual-MiniLM-L12-v2` embeddingleri ile eğitildi. |
-| XGBoost + HuggingFace Embeddings | 8.99 | XGBoost Hist tree metodu ile eğitilen model. |
-| LightGBM + HuggingFace Embeddings | 9.05 | Optuna ile hiperparametreleri optimize edilmiş LGBM modeli. |
+| **🏆 Super Stacking Pipeline (Ridge)** | **8.78** | **Best performing model.** A combination of 4 different Base Models + Pseudo Labeling, stacked with Ridge. |
+| CatBoost (Text Features Native) | 8.88 | Model trained using only CatBoost's built-in NLP engine. |
+| CatBoost + HuggingFace Embeddings | 8.94 | Trained with `paraphrase-multilingual-MiniLM-L12-v2` embeddings. |
+| XGBoost + HuggingFace Embeddings | 8.99 | Model trained with the XGBoost Hist tree method. |
+| LightGBM + HuggingFace Embeddings | 9.05 | LGBM model with hyperparameters optimized via Optuna. |
 
-## 🧠 Gelişmiş Yaklaşımlar (Advanced Features)
+## 🧠 Advanced Approaches (Advanced Features)
 
-Bu projede sadece standart algoritmalar değil, Kaggle yarışmalarında fark yaratan üst düzey teknikler kullanılmıştır:
+This project uses not only standard algorithms, but also advanced techniques that make a difference in Kaggle competitions:
 
-1. **HuggingFace Sentence Embeddings:** `mentor_feedback_text` alanındaki doğal dil verisini sayısal formata çevirmek için `paraphrase-multilingual-MiniLM-L12-v2` transformer modeli kullanılmış ve özellik olarak `embeddings_cache.pkl` dosyasına aktarılmıştır.
-2. **Adversarial Validation:** Eğitim (Train) ve Test setleri arasındaki veri dağılım farklılıklarını (distribution shift) önlemek ve overfitting'den kaçınmak amacıyla Adversarial Classifier uygulanmıştır.
-3. **Data Leakage & Magic Feature Hunt:** Veride hedef değişkeni ele veren herhangi bir kaçak (leak) olup olmadığı lineer modeller üzerinden test edilmiştir.
-4. **Pseudo-Labeling (2-Pass Training):** Test setindeki emin olunan yüksek güvenli tahminler (pseudo-labels) alınarak, ana model 2. aşamada tekrar eğitilmiş ve test setinin yapısı modele öğretilmiştir.
-5. **Multi-Seed K-Fold Cross Validation:** Model sonuçlarının stabil olması için 3 farklı random seed (42, 123, 777) ile modeller eğitilip sonuçların ortalaması (averaging) alınmıştır.
+1. **HuggingFace Sentence Embeddings:** The `paraphrase-multilingual-MiniLM-L12-v2` transformer model was used to convert the natural language data in the `mentor_feedback_text` field into numerical format, and exported as a feature into the `embeddings_cache.pkl` file.
+2. **Adversarial Validation:** An Adversarial Classifier was applied to prevent distribution shift between the Train and Test sets and to avoid overfitting.
+3. **Data Leakage & Magic Feature Hunt:** The data was tested via linear models to check for any leaks that could give away the target variable.
+4. **Pseudo-Labeling (2-Pass Training):** High-confidence predictions (pseudo-labels) from the test set were taken, and the main model was retrained in a 2nd stage, teaching the model the structure of the test set.
+5. **Multi-Seed K-Fold Cross Validation:** To ensure stable model results, models were trained with 3 different random seeds (42, 123, 777) and the results were averaged.
 
-## 📂 Proje Yapısı (Pipeline)
+## 📂 Project Structure (Pipeline)
 
-Proje, kod okunabilirliğini artırmak ve bilimsel bir süreç izlemek amacıyla adım adım (Pipeline) numaralandırılmıştır:
+The project is numbered step by step (Pipeline) to improve code readability and follow a scientific process:
 
-*   **`01_exploratory_data_analysis.py`:** Keşifçi veri analizi (EDA), değişken dağılımlarının ve zaman tabanlı özelliklerin incelenmesi.
-*   **`02_outlier_detection.py`:** Aykırı değer analizi, `career_success_score` dağılımında sınırların belirlenmesi.
-*   **`03_target_leakage_hunt.py`:** Hedef sızıntısı testleri, ağırlıklı ortalama deterministik formül avı.
-*   **`04_magic_feature_hunt.py`:** Olası gizli alt değişken özelliklerinin lineer ve non-lineer yöntemlerle araştırılması.
-*   **`05_adversarial_validation.py`:** Train-Test dağılım kontrolü ve aykırılık tespiti.
-*   **`06_optuna_hyperparameter_tuning.py`:** CatBoost ve LightGBM modelleri için geniş uzaylı (night-mode) hiperparametre arayışı.
-*   **`07_super_stacking_pipeline.py`:** 4 farklı temel modelin (CatBoost, LightGBM, XGBoost) Ridge regressor ile Stacklendiği, Pseudo-Labeling uygulanan ve final tahmini oluşturan "Super Stacking" ana betiği.
+*   **`01_exploratory_data_analysis.py`:** Exploratory data analysis (EDA), examination of variable distributions and time-based features.
+*   **`02_outlier_detection.py`:** Outlier analysis, determining the boundaries in the `career_success_score` distribution.
+*   **`03_target_leakage_hunt.py`:** Target leakage tests, hunting for a weighted-average deterministic formula.
+*   **`04_magic_feature_hunt.py`:** Investigating possible hidden sub-variable features using linear and non-linear methods.
+*   **`05_adversarial_validation.py`:** Train-Test distribution check and outlier detection.
+*   **`06_optuna_hyperparameter_tuning.py`:** Wide-space (night-mode) hyperparameter search for CatBoost and LightGBM models.
+*   **`07_super_stacking_pipeline.py`:** The main "Super Stacking" script, where 4 different base models (CatBoost, LightGBM, XGBoost) are stacked with a Ridge regressor, Pseudo-Labeling is applied, and the final prediction is produced.
 
-## 🛠️ Kullanılan Teknolojiler
+## 🛠️ Technologies Used
 
-*   **Diller:** Python (Pandas, NumPy)
-*   **Modeller:** CatBoost, LightGBM, XGBoost, Scikit-Learn
+*   **Languages:** Python (Pandas, NumPy)
+*   **Models:** CatBoost, LightGBM, XGBoost, Scikit-Learn
 *   **NLP:** HuggingFace `sentence-transformers`
-*   **Optimizasyon:** Optuna (Hyperparameter Tuning)
-
-## 💡 Sonuç
-Bu repo, veri ön işlemeden derin NLP vektörizasyonlarına ve uçtan uca Stacking mimarilerine kadar "Winner" tarzı Kaggle çözüm yapısını temsil etmektedir.
+*   **Optimization:** Optuna (Hyperparameter Tuning)
